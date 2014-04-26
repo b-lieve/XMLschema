@@ -1,0 +1,14 @@
+<!-- DTD created at Fri Apr 25 11:12:32 PDT 2014 with EditiX XML Editor (http://www.editix.com). Please insert an encoding attribute header for converting any DTD  -->
+
+ <!-- <!ELEMENT  tag (#PCDATA)>
+ -->
+  <!--  <!ATTLIST tag  attribute CDATA #REQUIRED>
+ -->
+
+<!ELEMENT note (to,from,heading,body)>
+<!ELEMENT to (#PCDATA)>
+<!ELEMENT from (#PCDATA)>
+<!ELEMENT heading (#PCDATA)>
+<!ELEMENT body (#PCDATA)>
+
+
