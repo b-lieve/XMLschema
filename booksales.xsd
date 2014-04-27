@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- New XSD document created with EditiX XML Editor (http://www.editix.com) at Sun Apr 27 12:05:20 PDT 2014 -->
+<!--
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+targetNamespace="http://www.w3schools.com"
+elementFormDefault="qualified">
+<xs:schema  xmlns:xs="http://www.w3.org/2001/XMLSchema">
+-->
+
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+targetNamespace="http://www.w3schools.com"
+xmlns="http://www.w3schools.com"
+elementFormDefault="qualified">
+<!--Author  simple elem-->
+<xs:simpleType name="AuthorID">
+	<xs:restriction base="xs:string"  >
+		<xs:pattern value="[0-9]{2}[a-zA-Z][0-9]" />
+	</xs:restriction>
+</xs:simpleType>
+<xs:element name="ID"  type="AuthorID" ></xs:element>
+
+<xs:element name="Name"  >
+	<xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[A-Z][a-z]*\s([A-Z]\s)?[A-Z][a-z]*" />
+		</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="Email"  >
+	<xs:simpleType>
+		<xs:restriction base="xs:string">
+		     <!-- too complex
+		      <xs:pattern value="\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b"/>
+		      -->
+		      <xs:pattern value="(\w[-._\w]*\w@\w[-._\w]*\w\.\w{2,3})"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+
+<xs:element name="Phone"  >
+	<xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="\([1-9][0-9]{2}\)\s[1-9][0-9]{2}\-[0-9]{4}" />
+		</xs:restriction>
+	</xs:simpleType>
+</xs:element>
+<!--Book simple elem -->
+<xs:simpleType name="BookISBN">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[1-9][0-9]{8}[0-9X]" />
+		</xs:restriction>
+	</xs:simpleType>
+<xs:element name="ISBN" type="BookISBN"></xs:element>
+
+
+<xs:element name="Title" type="xs:string" >
+</xs:element>
+
+
+<!--Formats elem -->
+<xs:simpleType name="BookFormatsFormat">
+	<xs:restriction base="xs:string">
+		<xs:pattern value="eBook|Paperback|Hardcover"/>
+	</xs:restriction>
+</xs:simpleType>
+<xs:element name="Format"  type="BookFormatsFormat"></xs:element>
+
+<xs:simpleType name="MSRP">
+	<xs:restriction base="xs:decimal">
+		<xs:minInclusive value="0"></xs:minInclusive>
+	</xs:restriction>
+</xs:simpleType>
+<xs:element name="MSRP" type="MSRP" ></xs:element>
+
+<xs:element name="WeeksBSL" type="xs:positiveInteger" ></xs:element>
+
+
+<!--Book simple elem -->
+<xs:element name="Retailer" type="xs:string"  ></xs:element>
+
+<xs:simpleType name="Price">
+	<xs:restriction base="xs:decimal">
+		<xs:minInclusive value="0"></xs:minInclusive>
+	</xs:restriction>
+</xs:simpleType>
+<xs:element name="Price" type="Price"></xs:element>
+<xs:element name="UnitsSold"  type="xs:nonNegativeInteger" ></xs:element>
+
+
+<xs:element name="Authors">
+	<xs:complexType>
+		<xs:sequence>
+			<xs:element name="Author"  maxOccurs="unbounded"> 
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="ID"></xs:element>
+						<xs:element ref="Name"></xs:element>
+						<xs:element ref="Email"></xs:element>
+						<xs:element ref="Phone"></xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:element>
+
+<xs:group name="SingleFormat">
+	<xs:sequence>
+		<xs:element ref="Format"></xs:element>
+		<xs:element ref="MSRP"></xs:element>
+	</xs:sequence>
+</xs:group>
+<xs:element name="Formats">
+	<xs:complexType>
+		<xs:sequence>
+		 	<xs:group ref="SingleFormat" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:element>
+
+
+<xs:element name="Books">
+	<xs:complexType>
+		<xs:sequence>
+			<xs:element name="Book" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="ISBN"></xs:element>
+						<xs:element ref="Title"></xs:element>
+						<xs:element name="Author"  type="AuthorID" maxOccurs="unbounded"></xs:element>
+						<xs:element ref="Formats" maxOccurs="unbounded"></xs:element>
+						<xs:element ref="WeeksBSL" minOccurs="0"></xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:element>
+
+<xs:element name="Sales" >
+	<xs:complexType>
+		<xs:sequence>
+			<xs:element name="Sale"  maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="Retailer"></xs:element>
+						<xs:element ref="Price"></xs:element>
+						<xs:element ref="UnitsSold"></xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:element>
+
+<xs:element name="BookSales" >
+	<xs:complexType>
+		<xs:sequence>
+			<xs:element name="BookSale"  maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Format" type="BookFormatsFormat"></xs:element>
+						<xs:element ref="Sales"></xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:element>
+
+<xs:element name="SalesInfo">
+	<xs:complexType>
+		<xs:sequence>
+			<xs:element name="OneSalesInfo" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Book" type="BookISBN"></xs:element>
+						<xs:element ref="BookSales"></xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:element>
+
+<xs:element name="booksales">
+	<xs:complexType>
+		<xs:all>
+			<xs:element ref="Authors"></xs:element>
+			<xs:element ref="Books"></xs:element>
+			<xs:element ref="SalesInfo"></xs:element>
+		</xs:all>
+	</xs:complexType>
+</xs:element>
+</xs:schema>
+
