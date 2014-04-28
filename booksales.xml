@@ -1,7 +1,8 @@
 <?xml version="1.0"?>
-<booksales       xmlns="http://www.w3schools.com"
-	xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
-	xs:schemaLocation="http://www.w3schools.com booksales.xsd">
+<?xml-stylesheet type="text/xsl" href="booksales.xsl"?>
+<booksales  	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="booksales.xsd">
+
 <Authors>
 	<Author>
 		<ID>21f3</ID>
@@ -35,7 +36,6 @@
 	</Author>	
 </Authors>
 <Books>
-
 	<Book>
 		<ISBN>4756614025</ISBN>
 		<Title>A Tale of Three Towns </Title>

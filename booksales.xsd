@@ -10,8 +10,6 @@ elementFormDefault="qualified">
 
 
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-targetNamespace="http://www.w3schools.com"
-xmlns="http://www.w3schools.com"
 elementFormDefault="qualified">
 <!--Author  simple elem-->
 <xs:simpleType name="AuthorID">
@@ -35,7 +33,7 @@ elementFormDefault="qualified">
 		     <!-- too complex
 		      <xs:pattern value="\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b"/>
 		      -->
-		      <xs:pattern value="(\w[-._\w]*\w@\w[-._\w]*\w\.\w{2,3})"/>
+		     <xs:pattern value="(\w[-._\w]*\w@\w[-._\w]*\w\.\w{2,3})"/> 
 		</xs:restriction>
 	</xs:simpleType>
 </xs:element>
