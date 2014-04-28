@@ -4,19 +4,19 @@ table,tr,td, th{
 }
 #authors{
  font: Arial;
- font-size: 12px;
+ font-size: 15px;
  border: 2px;
  background-color: grey;
 }
 #books{
  font: Sans-Serif;
- font-size: 14px;
+ font-size: 17px;
  border: 1px;
- background-color: blue;
+ background-color: cyan;
 }
 #salesinfo{
  font: Times;
- font-size: 11px;
+ font-size: 14px;
  border: 2px;
  background-color: pink;
 }
