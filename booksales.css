@@ -1,0 +1,22 @@
+table,tr,td, th{
+	border: 1px black solid ;
+	border-collapse:collapse;
+}
+#authors{
+ font: Arial;
+ font-size: 12px;
+ border: 2px;
+ background-color: grey;
+}
+#books{
+ font: Sans-Serif;
+ font-size: 14px;
+ border: 1px;
+ background-color: blue;
+}
+#salesinfo{
+ font: Times;
+ font-size: 11px;
+ border: 2px;
+ background-color: pink;
+}
