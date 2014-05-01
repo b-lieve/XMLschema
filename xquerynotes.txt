@@ -1,0 +1,4 @@
+return one node(most outside) at a time.
+add ", $newline" at end of that node
+could add "{$newline}";
+
