@@ -2,3 +2,21 @@ return one node(most outside) at a time.
 add ", $newline" at end of that node
 could add "{$newline}";
 
+use , to separate two "for" loop in parallel
+
+////////////////////
+This selects the parent of the current (context) node.
+<node id="50>
+  <childnode1 childid="51" />
+  <childnode2 childid="52" />
+</node>
+Longer and more general answers:
+//node()[childnode1/@childid="51"]
+This selects any node in the document that has a child element named childnode1, that has an attibute childid, whose value is '51'.
+
+One should try to avoid an expression that contains the // abbreviation, because this may be very inefficient. Use '//' only when the structure of the XML document isn't known in advance.
+
+Best answer:
+
+ExpressionSelectingTheChildNode/..
+///////////////////

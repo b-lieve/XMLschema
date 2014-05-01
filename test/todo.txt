@@ -1,0 +1,7 @@
+Java read xml organize to q1, xml parser(JDOM)
+q4 
+
+q5 xquery with java
+
+
+
